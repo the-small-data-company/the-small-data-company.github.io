@@ -1,9 +1,79 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Small Data Company</title>
-  </head>
-  <body>
-    <h1>Small Data Company</h1>
-  </body>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .logo {
+            margin-bottom: 1.5rem;
+        }
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            margin: 0;
+        }
+        .logo-text .small {
+            color: #c41e5c;
+        }
+        .logo-text .data {
+            color: #6b7280;
+        }
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            letter-spacing: 0.3em;
+            margin-top: 0.25rem;
+        }
+        p {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+        a {
+            color: #c41e5c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid #c41e5c;
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            background: #c41e5c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-text"><span class="small">SMALL</span> <span class="data">DATA</span></div>
+            <div class="logo-subtitle">COMPANY.AI</div>
+        </div>
+        <p>Building something small... <span class="blink">_</span></p>
+        <a href="mailto:info@smalldatacompany.ai">Get in touch</a>
+    </div>
+</body>
 </html>
