@@ -1,80 +1,1150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Small Data Company</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            background-color: #f8f8f8;
-            color: #333;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-        .logo {
-            margin-bottom: 1.5rem;
-        }
-        .logo-text {
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 0.05em;
-            margin: 0;
-        }
-        .logo-text .small {
-            color: #c41e5c;
-        }
-        .logo-text .data {
-            color: #6b7280;
-        }
-        .logo-subtitle {
-            font-size: 0.9rem;
-            color: #9ca3af;
-            letter-spacing: 0.3em;
-            margin-top: 0.25rem;
-        }
-        p {
-            font-size: 1rem;
-            color: #888;
-            margin-bottom: 2rem;
-        }
-        .blink {
-            animation: blinker 1s linear infinite;
-        }
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
-        a {
-            color: #c41e5c;
-            text-decoration: none;
-            font-size: 0.9rem;
-            border: 1px solid #c41e5c;
-            padding: 12px 24px;
-            transition: all 0.3s ease;
-        }
-        a:hover {
-            background: #c41e5c;
-            color: #fff;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Small Data Company.AI - Agentic Data</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ───────── Reset & Base ───────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:#f9fafb;
+  color:#1a1f2e;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  overflow-x:hidden;
+  line-height:1.65;
+}
+
+/* ───────── Palette ───────── */
+:root{
+  --accent:#4A6CF7;
+  --accent2:#C5855A;
+  --accent3:#5B9A7D;
+  --accent4:#4A6CF7;
+  --accent-glow:rgba(74,108,247,.1);
+  --accent-glow2:rgba(197,133,90,.08);
+  --bg:#f9fafb;
+  --bg2:#f2f4f7;
+  --surface:#ffffff;
+  --surface2:#f7f8fa;
+  --text:#1a1f2e;
+  --text-dim:#64748b;
+  --border:#e2e6ed;
+}
+
+/* ───────── Canvas (bg particles) ───────── */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ───────── Three.js hero ───────── */
+#three-hero{position:absolute;inset:0;z-index:0;pointer-events:none}
+#three-hero canvas{display:block;width:100%!important;height:100%!important}
+
+/* ───────── Navigation ───────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2.5rem;
+  background:rgba(249,250,251,.75);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(226,230,237,.6);
+  transition:background .3s;
+}
+.nav-logo{display:inline-block;font-weight:800;font-size:1.1rem;letter-spacing:.06em;text-decoration:none;color:#1a1f2e}
+.nav-logo .ai{color:var(--accent);font-weight:900}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.03em;transition:color .25s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{
+  font-size:.8rem;padding:.5rem 1.3rem;
+  background:var(--accent);
+  color:#fff;font-weight:600;
+  text-decoration:none;border-radius:6px;transition:all .25s;letter-spacing:.02em;
+}
+.nav-cta:hover{box-shadow:0 4px 20px var(--accent-glow);transform:translateY(-1px)}
+
+/* ───────── Sections ───────── */
+section{position:relative;z-index:1;padding:7rem 2rem}
+.section-inner{max-width:1120px;margin:0 auto}
+
+/* ───────── Hero ───────── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding-top:5rem;
+  background:#f2f4f7;
+}
+.hero-badge{
+  display:inline-block;padding:.35rem 1.1rem;
+  border:1px solid var(--border);
+  border-radius:50px;font-size:.72rem;color:var(--text-dim);letter-spacing:.1em;font-weight:500;
+  margin-bottom:1.8rem;
+  animation:fadeUp .8s ease both;
+}
+.hero h1{
+  font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:900;line-height:1.08;
+  margin-bottom:1.3rem;letter-spacing:-.02em;
+  animation:fadeUp 1s ease both .15s;
+}
+.hero h1 .grad{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.2rem);color:var(--text-dim);max-width:600px;margin:0 auto 2.8rem;
+  font-weight:400;
+  animation:fadeUp 1s ease both .3s;
+}
+.hero-tags{
+  display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;
+  animation:fadeUp 1s ease both .45s;
+}
+.hero-tags span{
+  padding:.3rem .9rem;border-radius:50px;font-size:.75rem;font-weight:500;
+  background:rgba(74,108,247,.06);border:1px solid rgba(74,108,247,.15);color:var(--accent);
+}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  animation:bounce 2s infinite;color:var(--text-dim);font-size:.7rem;font-weight:500;
+  text-align:center;letter-spacing:.12em;
+}
+.hero-scroll::after{
+  content:'';display:block;width:1px;height:28px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  margin:8px auto 0;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ───────── Problem ───────── */
+.problem{background:var(--bg2)}
+.problem-text{
+  max-width:780px;margin:0 auto;text-align:center;
+  font-size:clamp(1.3rem,3vw,1.85rem);font-weight:600;line-height:1.45;
+}
+.problem-text em{font-style:normal;color:var(--accent)}
+.problem-sub{text-align:center;color:var(--text-dim);margin-top:1.2rem;font-size:1rem}
+
+/* ───────── Platform glance ───────── */
+.glance-header{text-align:center;margin-bottom:3.5rem}
+.glance-header h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;margin-bottom:.6rem;letter-spacing:-.01em}
+.glance-header p{color:var(--text-dim);font-size:1rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);border-radius:16px;
+  padding:1.8rem;transition:transform .35s,border-color .35s,box-shadow .35s;
+  position:relative;overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);
+  opacity:0;transition:opacity .35s;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(74,108,247,.25);box-shadow:0 8px 24px rgba(74,108,247,.08)}
+.card:hover::before{opacity:1}
+.card-icon{
+  width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;font-size:1.2rem;
+  background:rgba(74,108,247,.07);
+  border:1px solid rgba(74,108,247,.12);
+}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.card p{font-size:.87rem;color:var(--text-dim);line-height:1.55}
+
+/* ───────── Vision / Mission / Approach ───────── */
+.vma{background:var(--bg2)}
+.vma-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.vma-item{
+  padding:2rem;border-radius:16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+}
+.vma-item h3{font-size:.82rem;letter-spacing:.12em;color:var(--accent);margin-bottom:.6rem;text-transform:uppercase;font-weight:700}
+.vma-item p{color:var(--text-dim);font-size:.9rem}
+
+/* ───────── Agents Modes ───────── */
+.modes-header{text-align:center;margin-bottom:3.5rem}
+.modes-header h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;margin-bottom:.5rem}
+.modes-header p{color:var(--text-dim)}
+.modes-timeline{display:flex;gap:0;justify-content:center;flex-wrap:wrap;position:relative}
+.mode-step{
+  flex:1;min-width:260px;max-width:350px;padding:2rem 1.8rem;
+  background:var(--surface);
+  border:1px solid var(--border);border-radius:16px;
+  position:relative;transition:border-color .35s,box-shadow .35s;
+}
+.mode-step:hover{border-color:rgba(74,108,247,.25);box-shadow:0 4px 30px var(--accent-glow)}
+.mode-num{
+  position:absolute;top:-14px;left:24px;
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--accent);
+  color:#fff;font-size:.75rem;font-weight:800;
+}
+.mode-step h3{margin-top:.5rem;margin-bottom:.5rem;font-size:1.02rem;font-weight:700}
+.mode-step p{color:var(--text-dim);font-size:.87rem}
+.mode-arrow{
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--accent);padding:0 .4rem;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ───────── Use-cases ───────── */
+.usecases{background:var(--bg2)}
+.uc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin-top:3rem}
+.uc-card{
+  background:var(--surface);
+  border:1px solid var(--border);border-radius:16px;
+  padding:2rem;transition:transform .35s,border-color .35s;
+}
+.uc-card:hover{transform:translateY(-4px);border-color:rgba(74,108,247,.25)}
+.uc-card h3{font-size:1.05rem;margin-bottom:.2rem;font-weight:700}
+.uc-card .uc-sub{font-size:.8rem;color:var(--accent);margin-bottom:.8rem;font-weight:500}
+.uc-card ul{list-style:none;padding:0}
+.uc-card li{font-size:.87rem;color:var(--text-dim);padding:.25rem 0;padding-left:1.2rem;position:relative}
+.uc-card li::before{content:'>';position:absolute;left:0;color:var(--accent);font-weight:700;font-family:monospace}
+
+/* ───────── Architecture ───────── */
+.arch-diagram{
+  display:flex;flex-direction:column;gap:0;margin-top:3rem;
+  max-width:900px;margin-left:auto;margin-right:auto;
+}
+.arch-layer{
+  padding:1.3rem 2rem;border:1px solid var(--border);
+  text-align:center;font-size:.9rem;position:relative;
+  transition:border-color .35s,box-shadow .35s;
+}
+.arch-layer:hover{border-color:rgba(74,108,247,.25);box-shadow:0 0 20px var(--accent-glow)}
+.arch-layer:first-child{border-radius:16px 16px 0 0}
+.arch-layer:last-child{border-radius:0 0 16px 16px}
+.arch-layer h4{font-size:.75rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:.3rem;font-weight:700}
+.arch-layer span{color:var(--text-dim);font-size:.83rem}
+.arch-connector{display:flex;justify-content:center;height:20px;position:relative}
+.arch-connector::after{
+  content:'';width:2px;height:100%;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+}
+
+/* ───────── Testing ───────── */
+.testing{background:var(--bg2)}
+.test-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:2.5rem}
+.test-feat{
+  display:flex;align-items:flex-start;gap:.8rem;padding:1rem 1.2rem;
+  border-radius:12px;background:var(--surface);border:1px solid var(--border);
+  transition:border-color .3s;
+}
+.test-feat:hover{border-color:rgba(74,108,247,.25)}
+.test-dot{flex-shrink:0;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:.5rem}
+.test-feat span{font-size:.87rem;color:var(--text-dim)}
+
+/* ───────── Security ───────── */
+.sec-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2.5rem}
+.sec-col h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:1rem;font-weight:700}
+.sec-col ul{list-style:none;padding:0}
+.sec-col li{font-size:.87rem;color:var(--text-dim);padding:.35rem 0;padding-left:1.4rem;position:relative}
+.sec-col li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:600;font-size:.75rem}
+
+/* ───────── CTA ───────── */
+.cta-section{
+  text-align:center;
+  background:radial-gradient(ellipse at center,rgba(74,108,247,.04) 0%,transparent 70%);
+}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.8rem}
+.cta-section h2 .grad{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.cta-section p{color:var(--text-dim);margin-bottom:2.2rem;font-size:1.05rem}
+.cta-btn{
+  display:inline-block;padding:.85rem 2.6rem;
+  background:var(--accent);
+  color:#fff;border-radius:8px;
+  text-decoration:none;font-weight:700;font-size:.92rem;
+  transition:transform .25s,box-shadow .25s;
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow)}
+
+/* ───────── Footer ───────── */
+footer{
+  text-align:center;padding:2rem;font-size:.76rem;color:var(--text-dim);
+  border-top:1px solid var(--border);position:relative;z-index:1;
+}
+
+/* ───────── Scroll reveal ───────── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.stagger>*{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.stagger.visible>*:nth-child(1){transition-delay:.05s}
+.stagger.visible>*:nth-child(2){transition-delay:.12s}
+.stagger.visible>*:nth-child(3){transition-delay:.19s}
+.stagger.visible>*:nth-child(4){transition-delay:.26s}
+.stagger.visible>*:nth-child(5){transition-delay:.33s}
+.stagger.visible>*:nth-child(6){transition-delay:.40s}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+
+/* ───────── Floating orbs ───────── */
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.orb-1{width:500px;height:500px;background:rgba(74,108,247,.05);top:-200px;right:-150px}
+.orb-2{width:400px;height:400px;background:rgba(197,133,90,.03);bottom:-100px;left:-100px}
+.orb-3{width:300px;height:300px;background:rgba(91,154,125,.03);top:40%;left:50%;transform:translateX(-50%)}
+
+/* ───────── Data flow animation ───────── */
+.flow-bar{
+  position:relative;overflow:hidden;height:2px;background:var(--border);
+  border-radius:2px;margin:2.5rem auto;max-width:500px;
+}
+.flow-bar::after{
+  content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);
+  animation:flowMove 3s ease-in-out infinite;
+}
+@keyframes flowMove{to{left:150%}}
+
+/* ───────── Responsive ───────── */
+@media(max-width:768px){
+  .nav{padding:.7rem 1.2rem}
+  .nav-links{display:none}
+  section{padding:4.5rem 1.2rem}
+  .modes-timeline{flex-direction:column;align-items:center}
+  .mode-arrow{transform:rotate(90deg)}
+  .hero h1{font-size:2rem}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ───────── Glowing line separator ───────── */
+.glow-line{
+  height:1px;border:0;
+  background:linear-gradient(90deg,transparent 0%,var(--accent) 40%,var(--accent2) 60%,transparent 100%);
+  opacity:.2;margin:0;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <div class="logo-text"><span class="small">SMALL</span><span class="data">DATA</span></div>
-            <div class="logo-subtitle">COMPANY.AI</div>
-        </div>
-        <p>Building something small... <span class="blink">_</span></p>
-        <a href="mailto:info@smalldatacompany.ai">Get in touch</a>
+
+<!-- Particle canvas -->
+<canvas id="particles"></canvas>
+
+<!-- ─── NAV ─── -->
+<nav class="nav">
+  <a href="#" class="nav-logo">SMALLDATA<span class="ai">.AI</span></a>
+  <ul class="nav-links">
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#usecases">Use-cases</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#security">Security</a></li>
+  </ul>
+  <a href="mailto:contact@thesmalldatacompany.com" class="nav-cta">Contact us</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+  <div id="three-hero"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="section-inner" style="position:relative;z-index:2">
+    <div class="hero-badge">THE SMALL DATA COMPANY.AI · 2026</div>
+    <h1>Agentic<br><span class="grad">Data™</span></h1>
+    <p class="hero-sub">Automate Data / DWH / ETL engineering with agents that work side-by-side with your team - then graduate to full automation.</p>
+    <div class="hero-tags">
+      <span>On-prem lakehouse</span>
+      <span>Cloud-native</span>
+      <span>Open standards</span>
+      <span>Kubernetes-ready</span>
     </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── PROBLEM ─── -->
+<section class="problem">
+  <div class="section-inner reveal">
+    <p class="problem-text">Data engineering is still <em>manual, brittle, and expensive</em> - because critical work is trapped in scripts, legacy ETL tools, and tribal knowledge.</p>
+    <p class="problem-sub">The winners will be those who can integrate, migrate, and operate faster - safely.</p>
+    <div class="flow-bar"></div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── PLATFORM AT A GLANCE ─── -->
+<section id="platform">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Platform at a glance</h2>
+      <p>A modern lakehouse experience - on <strong>your</strong> infrastructure.</p>
+    </div>
+    <div class="card-grid stagger">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>On-prem first</h3>
+        <p>Deploy behind your firewall. Keep data where it lives.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <h3>Lakehouse storage</h3>
+        <p>S3-compatible object storage + open table format for ACID transactions and time travel.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <h3>Cloud-native</h3>
+        <p>Kubernetes-ready architecture. Portable across on-prem and private cloud.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Distributed compute</h3>
+        <p>Distributed computation engine for SQL, batch, and streaming.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>Agentic automation</h3>
+        <p>Agents work side-by-side with engineers - then automate with guardrails.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>Catalog</h3>
+        <p>Discovery, governance & metadata management in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── VISION / MISSION / APPROACH ─── -->
+<section class="vma">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Why we exist</h2>
+    </div>
+    <div class="vma-grid stagger">
+      <div class="vma-item">
+        <h3>Vision</h3>
+        <p>Automate Data Engineers and DWH/ETL Engineers with agentic automation.</p>
+      </div>
+      <div class="vma-item">
+        <h3>Mission</h3>
+        <p>Build agents that take over repetitive data engineering work - replication, lineage extraction, job analysis, source DB analysis, migrations, and operational support.</p>
+      </div>
+      <div class="vma-item">
+        <h3>Approach</h3>
+        <p>Start side-by-side (copilot mode) to earn trust. Then graduate to automation with strong guardrails, approvals, and continuous data-level verification.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── AGENT MODES ─── -->
+<section id="agents">
+  <div class="section-inner">
+    <div class="modes-header reveal">
+      <h2>Agents that work where data work happens</h2>
+      <p>From assisted execution to autonomous operations.</p>
+    </div>
+    <div class="modes-timeline stagger">
+      <div class="mode-step">
+        <div class="mode-num">1</div>
+        <h3>Side-by-side</h3>
+        <p>Agent suggests plans, SQL, mappings, and tests. Human reviews & runs. Perfect for migrations and complex pipelines.</p>
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode-step">
+        <div class="mode-num">2</div>
+        <h3>Automation</h3>
+        <p>Agent executes approved workflows end-to-end: replication, schema drift handling, lineage extraction, and job refactoring.</p>
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode-step">
+        <div class="mode-num">3</div>
+        <h3>Continuous improvement</h3>
+        <p>Every run creates feedback: quality metrics, incidents, test results. Agents learn what "good" looks like in your environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── USE-CASES ─── -->
+<section class="usecases" id="usecases">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Use-cases</h2>
+      <p>Automate the work across the full data lifecycle.</p>
+    </div>
+    <div class="uc-grid stagger">
+      <div class="uc-card">
+        <h3>Replication & ingestion</h3>
+        <div class="uc-sub">Sources → Lakehouse</div>
+        <ul>
+          <li>CDC / batch ingestion</li>
+          <li>Schema evolution</li>
+          <li>Data products → data contracts</li>
+        </ul>
+      </div>
+      <div class="uc-card">
+        <h3>Lineage & observability</h3>
+        <div class="uc-sub">Understand and control</div>
+        <ul>
+          <li>End-to-end lineage</li>
+          <li>Job & dependency analysis</li>
+          <li>Cost / performance insights</li>
+        </ul>
+      </div>
+      <div class="uc-card">
+        <h3>Migration & modernization</h3>
+        <div class="uc-sub">Move off legacy ETL</div>
+        <ul>
+          <li>IBM DataStage</li>
+          <li>Oracle ODI / OIC</li>
+          <li>SQL / PL/SQL scripts</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;color:var(--text-dim);margin-top:2rem;font-size:.88rem">All use-cases run on shared, secure, governed infrastructure - on-prem or in your VPC.</p>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── ARCHITECTURE ─── -->
+<section id="architecture">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>How it works</h2>
+      <p>Unified agentic data infrastructure</p>
+    </div>
+    <div class="arch-diagram stagger">
+      <div class="arch-layer" style="background:var(--surface2)">
+        <h4>Agent Solutions</h4>
+        <span>Replication · Lineage · Migration · Operations</span>
+      </div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:var(--surface)">
+        <h4>Agent Creation & Management</h4>
+        <span>Agent Studio · Tools & Skills · Policies · Approvals</span>
+      </div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:var(--surface2)">
+        <h4>Testing & Verification</h4>
+        <span>Automated tests · Data quality checks · Reconciliation · Regression suites</span>
+      </div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:var(--surface)">
+        <h4>Infrastructure</h4>
+        <span>Catalog · Distributed Compute · S3 Storage + Open Table Format · Connectors</span>
+      </div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:linear-gradient(135deg,rgba(74,108,247,.06),rgba(197,133,90,.04));border-color:var(--accent)">
+        <h4>Runs on</h4>
+        <span>Kubernetes · On-prem or private cloud</span>
+      </div>
+    </div>
+    <div class="flow-bar"></div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── TESTING ─── -->
+<section class="testing">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Automated testing & verification</h2>
+      <p>Fast, repeatable checks that prove an agent's output is correct.</p>
+    </div>
+    <div class="test-features stagger">
+      <div class="test-feat"><div class="test-dot"></div><span>Schema & drift detection - expected columns, types, constraints</span></div>
+      <div class="test-feat"><div class="test-dot"></div><span>Data contracts - freshness, volume, null / unique rules</span></div>
+      <div class="test-feat"><div class="test-dot"></div><span>Reconciliation - row-counts, checksums, key-level diffs</span></div>
+      <div class="test-feat"><div class="test-dot"></div><span>Semantic tests - reference integrity, business rules</span></div>
+      <div class="test-feat"><div class="test-dot"></div><span>Performance - runtime budgets, partitioning, file sizes</span></div>
+      <div class="test-feat"><div class="test-dot"></div><span>Regression - golden datasets + snapshot comparisons</span></div>
+    </div>
+    <p class="reveal" style="text-align:center;color:var(--accent);margin-top:2rem;font-size:.92rem;font-weight:600">Result: faster trust-building and safer automation.</p>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── VERIFICATION LOOP ─── -->
+<section>
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Verification loop</h2>
+    </div>
+    <div class="modes-timeline stagger" style="flex-wrap:wrap;gap:.6rem">
+      <div class="mode-step" style="min-width:180px;max-width:200px;text-align:center;padding:1.2rem">
+        <div class="mode-num">1</div>
+        <p style="margin-top:.5rem;font-size:.85rem">Agent generates / changes pipeline</p>
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode-step" style="min-width:180px;max-width:200px;text-align:center;padding:1.2rem">
+        <div class="mode-num">2</div>
+        <p style="margin-top:.5rem;font-size:.85rem">Run on sample or staging data</p>
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode-step" style="min-width:180px;max-width:200px;text-align:center;padding:1.2rem">
+        <div class="mode-num">3</div>
+        <p style="margin-top:.5rem;font-size:.85rem">Execute automated test suite</p>
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode-step" style="min-width:180px;max-width:200px;text-align:center;padding:1.2rem">
+        <div class="mode-num">4</div>
+        <p style="margin-top:.5rem;font-size:.85rem">Produce report + diffs</p>
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode-step" style="min-width:180px;max-width:200px;text-align:center;padding:1.2rem">
+        <div class="mode-num">5</div>
+        <p style="margin-top:.5rem;font-size:.85rem">Approve → deploy → monitor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── AGENT STUDIO / PORTFOLIO ─── -->
+<section class="usecases">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Agent Studio & portfolio</h2>
+      <p>Everything you need to ship reliable agents in production.</p>
+    </div>
+    <div class="card-grid stagger">
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Agent Studio</h3>
+        <p>Build & test agents using natural language.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Governance</h3>
+        <p>Policies, approvals, and guardrails.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Automated tests</h3>
+        <p>Data-level verification & regression suites.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>Connectors</h3>
+        <p>Integrate with tools & systems via APIs.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧩</div>
+        <h3>Tools & Skills</h3>
+        <p>Reusable skills for SQL, compute, DQ, and lineage.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Observability</h3>
+        <p>Dashboards, alerts, and run history.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── MIGRATION ACCELERATORS ─── -->
+<section>
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Migration accelerators</h2>
+      <p>From legacy ETL to modern lakehouse pipelines.</p>
+    </div>
+    <div class="sec-cols stagger">
+      <div class="sec-col">
+        <h3>Supported inputs</h3>
+        <ul>
+          <li>IBM DataStage</li>
+          <li>Oracle ODI</li>
+          <li>Oracle Integration Cloud (OIC)</li>
+          <li>SQL / PL/SQL scripts</li>
+          <li>Custom schedulers / job definitions</li>
+        </ul>
+      </div>
+      <div class="sec-col">
+        <h3>Outputs</h3>
+        <ul>
+          <li>Compute jobs / SQL pipelines</li>
+          <li>Open table format & medallion-style layers</li>
+          <li>Lineage graphs + documentation</li>
+          <li>Automated test suites for regression</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Migration pipeline animation -->
+    <div class="arch-diagram reveal" style="margin-top:2.5rem;max-width:700px">
+      <div class="arch-layer" style="background:var(--surface2)"><span>Ingest definitions (jobs, mappings, scripts)</span></div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:var(--surface)"><span>Parse & normalize (control flow + SQL)</span></div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:var(--surface2)"><span>Map to target patterns (distributed compute / open table format)</span></div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:var(--surface)"><span>Generate code + tests (data-level)</span></div>
+      <div class="arch-connector"></div>
+      <div class="arch-layer" style="background:linear-gradient(135deg,rgba(74,108,247,.06),rgba(197,133,90,.04));border-color:var(--accent)"><span>Validate + iterate (with humans)</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── ON-PREM LAKEHOUSE ─── -->
+<section class="usecases">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>On-prem lakehouse</h2>
+      <p>Open components, cloud-native deployment.</p>
+    </div>
+    <div class="uc-grid stagger">
+      <div class="uc-card">
+        <h3>Catalog</h3>
+        <div class="uc-sub">Metadata & discovery</div>
+        <ul>
+          <li>Datasets & schemas</li>
+          <li>Governance hooks</li>
+          <li>Lineage and documentation</li>
+        </ul>
+      </div>
+      <div class="uc-card">
+        <h3>Compute: Distributed Engine</h3>
+        <div class="uc-sub">Distributed processing</div>
+        <ul>
+          <li>SQL / batch / streaming</li>
+          <li>Works on clusters</li>
+          <li>Integrates with open table format</li>
+        </ul>
+      </div>
+      <div class="uc-card">
+        <h3>Storage: S3-Compatible + Open Table Format</h3>
+        <div class="uc-sub">S3-compatible object storage + open table standard</div>
+        <ul>
+          <li>ACID & time travel</li>
+          <li>Efficient files & partitions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── SECURITY ─── -->
+<section id="security">
+  <div class="section-inner">
+    <div class="glance-header reveal">
+      <h2>Security & governance</h2>
+      <p>Enterprise control without sacrificing speed.</p>
+    </div>
+    <div class="sec-cols stagger">
+      <div class="sec-col">
+        <h3>Principles</h3>
+        <ul>
+          <li>Data stays in your environment (on-prem / private cloud)</li>
+          <li>Least-privilege access for agents and tools</li>
+          <li>Human-in-the-loop approvals for risky actions</li>
+          <li>Full audit trail: prompts, tools, runs, and outputs</li>
+          <li>Deterministic verification via automated test suites</li>
+        </ul>
+      </div>
+      <div class="sec-col">
+        <h3>Operational Controls</h3>
+        <ul>
+          <li>Versioned agents + change management</li>
+          <li>Environment separation (dev / sit / uat / prod)</li>
+          <li>Observability: logs, metrics, and alerts</li>
+          <li>Safe rollback: previous pipeline versions</li>
+          <li>Policy-based guardrails</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-line">
+
+<!-- ─── CTA ─── -->
+<section class="cta-section">
+  <div class="section-inner reveal">
+    <h2>Let's automate data engineering -<br><span class="grad">safely.</span></h2>
+    <p>Ready to see the platform in action?</p>
+    <a href="mailto:contact@thesmalldatacompany.com" class="cta-btn">Get in touch →</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>© 2026 The Small Data Company.AI. All rights reserved.</p>
+</footer>
+
+<!-- ───────── Three.js CDN ───────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- ───────── SCRIPTS ───────── -->
+<script>
+/* ── Three.js: Data Fabric Terrain ── */
+(function(){
+  const container=document.getElementById('three-hero');
+  if(!container) return;
+  const W=()=>container.clientWidth, H=()=>container.clientHeight;
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0xf2f4f7,0.012);
+  const camera=new THREE.PerspectiveCamera(50,W()/H(),0.1,200);
+  camera.position.set(0,18,28);
+  camera.lookAt(0,0,0);
+  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+  renderer.setSize(W(),H());
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  /* Respect reduced motion preference */
+  const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionScale=prefersReduced?0.15:1;
+
+  scene.add(new THREE.AmbientLight(0xc0c8d4,0.5));
+  const dLight=new THREE.DirectionalLight(0x4A6CF7,0.8);
+  dLight.position.set(10,20,10);
+  scene.add(dLight);
+
+  /* ── Grid terrain ── */
+  const GRID=120,SPACING=0.55;
+  const planeGeo=new THREE.PlaneGeometry(GRID*SPACING,GRID*SPACING,GRID-1,GRID-1);
+  planeGeo.rotateX(-Math.PI/2);
+  const planeMat=new THREE.MeshBasicMaterial({color:0x4A6CF7,wireframe:true,transparent:true,opacity:0});
+  const plane=new THREE.Mesh(planeGeo,planeMat);
+  plane.visible=false;
+  scene.add(plane);
+  const planePos=planeGeo.attributes.position;
+
+  /* ── Smoothstep / lerp helpers ── */
+  function smoothstep(a,b,t){const x=Math.max(0,Math.min(1,(t-a)/(b-a)));return x*x*(3-2*x);}
+  function lerp(a,b,t){return a+(b-a)*t;}
+
+  /* ── Agent system with join/fork behavior ── */
+  const agentColors=[0x4A6CF7,0xC5855A,0x5B9A7D,0x4A6CF7,0xC5855A];
+  const NUM_AGENTS=6;
+  const WAYPOINTS=[
+    {x:-10,z:-8},{x:6,z:-12},{x:12,z:4},{x:-6,z:10},{x:0,z:0},
+    {x:-12,z:2},{x:8,z:8},{x:-4,z:-6},{x:10,z:-6},{x:-8,z:6},
+    {x:4,z:2},{x:-2,z:-10},{x:6,z:-4},{x:-10,z:4},{x:2,z:8}
+  ];
+
+  /* Each agent: current pos, target pos, state, timing */
+  const agents=[];
+  for(let i=0;i<NUM_AGENTS;i++){
+    const wp=WAYPOINTS[i%WAYPOINTS.length];
+    const col=agentColors[i%agentColors.length];
+    const g=new THREE.Group();
+    g.position.set(wp.x,0,wp.z);
+
+    /* beam */
+    const bGeo=new THREE.CylinderGeometry(0.03,0.03,12,6);
+    const bMat=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.35});
+    const beam=new THREE.Mesh(bGeo,bMat);beam.position.y=6;g.add(beam);
+
+    /* sphere */
+    const sGeo=new THREE.SphereGeometry(0.25,16,16);
+    const sMat=new THREE.MeshPhongMaterial({color:col,emissive:col,emissiveIntensity:1.0});
+    const sphere=new THREE.Mesh(sGeo,sMat);g.add(sphere);
+
+    /* soft glow halo */
+    const gGeo=new THREE.SphereGeometry(0.6,12,12);
+    const gMat=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.15});
+    const glow=new THREE.Mesh(gGeo,gMat);g.add(glow);
+
+    /* trail */
+    const trailGeo=new THREE.BufferGeometry();
+    const TRAIL_LEN=40;
+    const trailPositions=new Float32Array(TRAIL_LEN*3);
+    for(let ti=0;ti<TRAIL_LEN;ti++){trailPositions[ti*3]=wp.x;trailPositions[ti*3+1]=0;trailPositions[ti*3+2]=wp.z;}
+    trailGeo.setAttribute('position',new THREE.BufferAttribute(trailPositions,3));
+    const trailMat=new THREE.LineBasicMaterial({color:col,transparent:true,opacity:0.25});
+    const trail=new THREE.Line(trailGeo,trailMat);
+    scene.add(trail);
+
+    scene.add(g);
+    agents.push({
+      group:g,beam,sphere,glow,trail,trailGeo,trailPositions,TRAIL_LEN,
+      color:col,pulseSpd:1.2+Math.random()*0.8,
+      /* position state */
+      cx:wp.x,cz:wp.z,tx:wp.x,tz:wp.z,
+      sx:wp.x,sz:wp.z, /* start of current move */
+      h:0,
+      /* behavior */
+      state:'roam', /* roam | join | merged | fork */
+      moveT:1, moveSpeed:0.04+Math.random()*0.025,
+      mergeTarget:null, mergeGroup:null,
+      stateTimer:2+Math.random()*4, /* time until next state change */
+      scale:1,targetScale:1,isLeader:false,fuseCount:1
+    });
+  }
+
+  /* ── Join/Fork orchestrator ── */
+  /* Picks random subset of agents to join at a meeting point, hold, then fork apart */
+  let globalTimer=3+Math.random()*3;
+  function pickNewWaypoint(avoid){
+    let wp;
+    do{wp=WAYPOINTS[Math.floor(Math.random()*WAYPOINTS.length)];}
+    while(avoid&&Math.abs(wp.x-avoid.x)<2&&Math.abs(wp.z-avoid.z)<2);
+    return wp;
+  }
+
+  function triggerJoin(){
+    /* pick 2-4 agents to fuse */
+    const count=2+Math.floor(Math.random()*3);
+    const available=agents.filter(a=>a.state==='roam');
+    if(available.length<2) return;
+    const chosen=[];
+    const shuffled=[...available].sort(()=>Math.random()-0.5);
+    for(let i=0;i<Math.min(count,shuffled.length);i++) chosen.push(shuffled[i]);
+    /* pick exact meeting point - all go to the same spot */
+    const mp=pickNewWaypoint(null);
+    chosen.forEach((a,idx)=>{
+      a.state='join';
+      a.sx=a.cx;a.sz=a.cz;
+      a.tx=mp.x; /* exact same point for true fusion */
+      a.tz=mp.z;
+      a.moveT=0;
+      a.moveSpeed=0.03+Math.random()*0.015;
+      a.mergeGroup=chosen;
+      a.isLeader=(idx===0); /* first agent becomes the fused sphere */
+      a.fuseCount=chosen.length;
+    });
+  }
+
+  function triggerFork(group){
+    /* burst flash */
+    if(group.length>0){
+      flashActive=true;flashT=0;
+      flashPos.x=group[0].cx;flashPos.z=group[0].cz;
+      shockActive=true;shockT=0;shockPos.x=group[0].cx;shockPos.z=group[0].cz;shockStrength=1.5;
+    }
+    group.forEach(a=>{
+      a.state='fork';
+      const wp=pickNewWaypoint({x:a.cx,z:a.cz});
+      a.sx=a.cx;a.sz=a.cz;
+      a.tx=wp.x;a.tz=wp.z;
+      a.moveT=0;
+      a.moveSpeed=0.025+Math.random()*0.015;
+      a.group.visible=true; /* show all agents again */
+      a.targetScale=1;
+      a.isLeader=false;
+    });
+  }
+
+  /* ── Dynamic connections between agents ── */
+  const MAX_CONN=15;
+  const connLines=[];
+  const SEGS=24;
+  for(let i=0;i<MAX_CONN;i++){
+    const pts=[];
+    for(let j=0;j<=SEGS;j++) pts.push(new THREE.Vector3(0,0,0));
+    const geo=new THREE.BufferGeometry().setFromPoints(pts);
+    const mat=new THREE.LineBasicMaterial({color:0x4A6CF7,transparent:true,opacity:0});
+    const line=new THREE.Line(geo,mat);
+    scene.add(line);
+    connLines.push({line,geo,mat,active:false});
+  }
+
+  /* ── Stream particles ── */
+  const palette=[new THREE.Color(0x4A6CF7),new THREE.Color(0xC5855A),new THREE.Color(0x5B9A7D),new THREE.Color(0x4A6CF7)];
+  const SN=100;
+  const sGeo2=new THREE.BufferGeometry();
+  const sPos=new Float32Array(SN*3),sCol=new Float32Array(SN*3);
+  const sData=[];
+  for(let i=0;i<SN;i++){
+    const c=palette[Math.floor(Math.random()*palette.length)];
+    sCol[i*3]=c.r;sCol[i*3+1]=c.g;sCol[i*3+2]=c.b;
+    sData.push({fromIdx:0,toIdx:1,t:Math.random(),speed:0.0008+Math.random()*0.0016,arc:1+Math.random()*2,active:false});
+  }
+  sGeo2.setAttribute('position',new THREE.BufferAttribute(sPos,3));
+  sGeo2.setAttribute('color',new THREE.BufferAttribute(sCol,3));
+  scene.add(new THREE.Points(sGeo2,new THREE.PointsMaterial({size:0.25,vertexColors:true,transparent:true,opacity:1.0,depthWrite:false})));
+
+  /* ── Rising particles ── */
+  const RN=25;
+  const rGeo2=new THREE.BufferGeometry();
+  const rPos=new Float32Array(RN*3),rCol=new Float32Array(RN*3);
+  const rData=[];
+  for(let i=0;i<RN;i++){
+    const c=palette[Math.floor(Math.random()*palette.length)];
+    rCol[i*3]=c.r;rCol[i*3+1]=c.g;rCol[i*3+2]=c.b;
+    rData.push({t:Math.random(),speed:0.002+Math.random()*0.004,ai:Math.floor(Math.random()*NUM_AGENTS)});
+  }
+  rGeo2.setAttribute('position',new THREE.BufferAttribute(rPos,3));
+  rGeo2.setAttribute('color',new THREE.BufferAttribute(rCol,3));
+  scene.add(new THREE.Points(rGeo2,new THREE.PointsMaterial({size:0.15,vertexColors:true,transparent:true,opacity:0.8,depthWrite:false})));
+
+  /* ── Merge shockwave rings (multiple for visual impact) ── */
+  const flashRings=[];
+  for(let fi=0;fi<3;fi++){
+    const innerR=0.3+fi*0.15, outerR=0.8+fi*0.3;
+    const fGeo=new THREE.RingGeometry(innerR,outerR,64);fGeo.rotateX(-Math.PI/2);
+    const fMat=new THREE.MeshBasicMaterial({color:[0x3A7BF5,0xEF5350,0xFFB930][fi],transparent:true,opacity:0,side:THREE.DoubleSide});
+    const fMesh=new THREE.Mesh(fGeo,fMat);
+    scene.add(fMesh);
+    flashRings.push({mesh:fMesh,mat:fMat,delay:fi*0.08});
+  }
+  let flashActive=false,flashT=0,flashPos={x:0,z:0};
+  /* terrain shockwave state */
+  let shockActive=false,shockT=0,shockPos={x:0,z:0},shockStrength=1;
+
+  /* Mouse */
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{
+    mx=(e.clientX/window.innerWidth-0.5)*2;
+    my=(e.clientY/window.innerHeight-0.5)*2;
+  });
+
+  /* ── Animate ── */
+  const clock=new THREE.Clock();
+
+  /* Pre-compute static connection lines (agents don't move) */
+  let ci=0;
+  for(let i=0;i<NUM_AGENTS&&ci<MAX_CONN;i++){
+    for(let j=i+1;j<NUM_AGENTS&&ci<MAX_CONN;j++){
+      const a=agents[i],b=agents[j];
+      const dx=a.cx-b.cx,dz=a.cz-b.cz;
+      const dist=Math.sqrt(dx*dx+dz*dz);
+      const cl=connLines[ci];
+      if(dist<18){
+        const pos=cl.geo.attributes.position;
+        for(let k=0;k<=SEGS;k++){
+          const f=k/SEGS;
+          pos.setX(k,a.cx+(b.cx-a.cx)*f);
+          pos.setZ(k,a.cz+(b.cz-a.cz)*f);
+          pos.setY(k,0.15+Math.sin(f*Math.PI)*Math.max(0.5,dist*0.12));
+        }
+        pos.needsUpdate=true;
+        cl.mat.opacity=dist<3?0.25:0.06+(1-dist/18)*0.1;
+      } else {
+        cl.mat.opacity=0;
+      }
+      ci++;
+    }
+  }
+  for(;ci<MAX_CONN;ci++){connLines[ci].mat.opacity=0;}
+
+  /* Set static agent properties once */
+  agents.forEach(a=>{
+    a.group.position.set(a.cx,0.15,a.cz);
+    a.beam.material.opacity=0.1;
+    a.glow.material.opacity=0.06;
+    a.sphere.material.emissiveIntensity=0.5;
+    /* collapse trail to single point */
+    const tp=a.trailPositions;
+    for(let ti=0;ti<a.TRAIL_LEN;ti++){tp[ti*3]=a.cx;tp[ti*3+1]=0.15;tp[ti*3+2]=a.cz;}
+    a.trailGeo.attributes.position.needsUpdate=true;
+    a.trail.material.opacity=0.08;
+  });
+
+  /* Place stream particles at fixed positions along arcs between agents */
+  sData.forEach((s,i)=>{
+    const a=agents[s.fromIdx],b=agents[s.toIdx];
+    const f=s.t;
+    sPos[i*3]=a.cx+(b.cx-a.cx)*f;
+    sPos[i*3+1]=0.15+Math.sin(f*Math.PI)*s.arc*0.2;
+    sPos[i*3+2]=a.cz+(b.cz-a.cz)*f;
+  });
+  sGeo2.attributes.position.needsUpdate=true;
+
+  /* Place rising particles at fixed positions */
+  rData.forEach((r,i)=>{
+    const a=agents[r.ai];
+    rPos[i*3]=a.cx+Math.sin(r.t+i)*0.15;
+    rPos[i*3+1]=r.t*6;
+    rPos[i*3+2]=a.cz+Math.cos(r.t+i)*0.15;
+  });
+  rGeo2.attributes.position.needsUpdate=true;
+
+  /* Single render */
+  camera.lookAt(0,2,0);
+  renderer.render(scene,camera);
+
+  window.addEventListener('resize',()=>{
+    camera.aspect=W()/H();camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setSize(W(),H());
+    renderer.render(scene,camera);
+  });
+
+  /* Re-render at correct DPR when browser zoom changes */
+  function watchDPR(){
+    const mq=matchMedia('(resolution: '+window.devicePixelRatio+'dppx)');
+    mq.addEventListener('change',function onZoom(){
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+      renderer.setSize(W(),H());
+      mq.removeEventListener('change',onZoom);
+      watchDPR();
+    },{once:true});
+  }
+  watchDPR();
+})();
+</script>
+
+<script>
+/* ── Subtle bg dots ── */
+(function(){
+  const c=document.getElementById('particles'),ctx=c.getContext('2d');
+  let W,H;
+  function getDPR(){return window.devicePixelRatio||1;}
+  function resize(){const dpr=getDPR();W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}
+  addEventListener('resize',resize);resize();
+  /* Also update on zoom */
+  function watchDPR2(){
+    const mq=matchMedia('(resolution: '+window.devicePixelRatio+'dppx)');
+    mq.addEventListener('change',function(){resize();mq.removeEventListener('change',arguments.callee);watchDPR2();},{once:true});
+  }
+  watchDPR2();
+  const dots=[];const count=Math.min(50,Math.floor(W*H/25000));
+  for(let i=0;i<count;i++) dots.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()+.5,a:Math.random()*.15+.03});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    dots.forEach(d=>{ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle='rgba(74,108,247,'+d.a*0.8+')';ctx.fill();});
+  }
+  draw();
+  const origResize=resize;
+  resize=function(){origResize();draw();};
+})();
+
+/* ── Scroll reveal ── */
+(function(){
+  const els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>obs.observe(el));
+})();
+
+/* ── Parallax orbs on mouse ── */
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*20;
+  const y=(e.clientY/innerHeight-.5)*20;
+  document.querySelectorAll('.orb').forEach((o,i)=>{
+    const f=i===0?1:-1;
+    o.style.transform=`translate(${x*f}px,${y*f}px)`;
+  });
+});
+
+/* ── Smooth nav background ── */
+addEventListener('scroll',()=>{
+  document.querySelector('.nav').style.background=
+    scrollY>60?'rgba(249,250,251,.95)':'rgba(249,250,251,.75)';
+});
+</script>
 </body>
 </html>
